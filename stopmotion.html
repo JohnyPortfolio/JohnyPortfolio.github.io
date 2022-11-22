@@ -92,18 +92,19 @@
                     margin: 0;
                     width: 100%;
                 }
-            }
 
-                @media screen and (max-width:600px) {
-                    #logo img {
+                #logo img {
                         width: 20px;
                         top:15px;
                         left:15px
                     }
+            }
 
+                @media screen and (max-width:600px) {
                     body {
                         font-size: 80%;
                     }
+                    
                     h1 {
                         font-size: 55px;
                         padding: 20px;
@@ -390,12 +391,10 @@
                 window.addEventListener("scroll", function (event) {
                     var scrollDistance = this.scrollY;
                     scrollPercentage = 100 / (document.body.scrollHeight - window.innerHeight) * scrollY;
-                    console.log(scrollPercentage);
 
                     if (scrollPercentage > 50 && scrollPercentage < 60)
                     {
                         var transition = (scrollPercentage - 60) / 10 * -1;
-                        console.log(transition);
                         article.style.backgroundColor = "rgb(" + (34 - 34 * transition) + ", " + (34 - 34 * transition) + ", " + (136 - 136 * transition) + ")";
                     }
                     else if (scrollPercentage >= 40 && scrollPercentage <= 50)
@@ -414,7 +413,6 @@
                         article.style.backgroundColor = "rgb(34, 34, 136)";
                         article.style.color = "rgb(255, 255, 255)";
                     }
-
                     var yPos = -scrollDistance;
                     var height = article.offsetHeight + scrollDistance;
                     background.style.backgroundPositionY = (invisibleArea / (document.body.scrollHeight - window.innerHeight) * scrollY) + "px";
