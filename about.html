@@ -5,7 +5,7 @@
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Contact Johny</title>
+        <title>About Johny</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <style>
             #background {
@@ -33,7 +33,12 @@
             #windowsdrag
             {
                 position: absolute;
-                width: 251px;
+                width: 300px;
+            }
+
+            #aboutme {
+                padding: 20px;
+                padding-bottom: 0;
             }
         </style>
     </head>
@@ -43,31 +48,28 @@
         <div class="padding"></div>
         <div class="windows" id="windowsdrag">
             <div class="windows-title" id="windowsdragheader">
-                <p class="windows-title">Contact <span class="windows">
-                    <img class="windows" src="img/windows-x-disabled.png"></span>
+                <p class="windows-title">About<span class="windows">
+                        <img class="windows" src="img/windows-x-disabled.png"></span>
                 </p>
             </div>
+            <p id="aboutme">Hey, I'm Johny! I'm a game developer, currently studying Game
+                Development at SintLucas Eindhoven. I enjoy (game) design and
+                psychology, and am interested in the concepts of gamification
+                and edutainment. I think schools use outdated systems, and could
+                be fun for everyone.</p>
             <p class="windows"><a href="index.html" class="windows"
-                title="Go back">Go <span
+                    title="Go back">Go <span
                         class="underline">B</span>ack</a></p>
             <p class="windows"><a href="mailto:johny20032018@gmail.com"
-                    class="windows" title="Send me a mail"
-                    target="_blank"><span class="underline">M</span>ail</a></p>
-            <p class="windows"><a href="https://johnywuijtsnl.itch.io/"
-                    class="windows" title="Go to my itch.io page"
-                    target="_blank">I<span class="underline">t</span>ch.io</a></p>
-            <p class="windows"><a href="https://github.com/JohnyWuijtsNL"
-                    class="windows" title="Go to my Github page"
-                    target="_blank"><span class="underline">G</span>ithub</a></p>
-        </div>
+            </div>
 
-        <script>
+            <script>
             dragElement(document.getElementById("windowsdrag"));
             
 
             function dragElement(elmnt) {
                 elmnt.style.left = (window.innerWidth - elmnt.offsetWidth) /2 + "px";
-                elmnt.style.top = elmnt.offsetHeight / 2 + "px";
+                elmnt.style.top = elmnt.offsetHeight / 4 + "px";
                 parallax();
                 var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
                 document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
@@ -118,6 +120,6 @@
                     }
                 }
         </script>
-    </body>
+        </body>
 
-</html>
+    </html>
