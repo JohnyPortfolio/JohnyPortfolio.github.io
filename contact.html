@@ -8,11 +8,14 @@
         <title>Contact Johny</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <style>
-            body {
-                background-color: #fcbce1;
-                background-image: url("img/contact-bg.png");
-                background-size: 220vh;
-                background-repeat: repeat-y;
+            #background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-image: url(img/contact-bg.png);
+                background-size: auto 100vmax;
+                background-position: 50% 0;
+                z-index: -1;
             }
 
             html {
@@ -26,18 +29,25 @@
             .padding {
                 padding: 60px;
             }
+
+            #windowsdrag
+            {
+                position: absolute;
+            }
         </style>
     </head>
 
     <body class="contact">
+        <div id="background"></div>
         <div class="padding"></div>
-        <div class="windows">
-            <div class="windows-title">
-                <p class="windows-title">Contact <span class="windows"><img
-                            class="windows"
-                            src="img/windows-x-disabled.png"></span></p>
+        <div class="windows" id="windowsdrag">
+            <div class="windows-title" id="windowsdragheader">
+                <p class="windows-title">Contact <span class="windows">
+                    <img class="windows" src="img/windows-x-disabled.png"></span>
+                </p>
             </div>
-            <p class="windows"><a href="index.html" class="windows" title="Go back">Go <span
+            <p class="windows"><a href="index.html" class="windows"
+                title="Go back">Go <span
                         class="underline">B</span>ack</a></p>
             <p class="windows"><a href="mailto:johny20032018@gmail.com"
                     class="windows" title="Send me a mail"
@@ -49,6 +59,64 @@
                     class="windows" title="Go to my Github page"
                     target="_blank"><span class="underline">G</span>ithub</a></p>
         </div>
+
+        <script>
+            dragElement(document.getElementById("windowsdrag"));
+            
+
+            function dragElement(elmnt) {
+                elmnt.style.left = (window.innerWidth - elmnt.offsetWidth) /2 + "px";
+                elmnt.style.top = elmnt.offsetHeight / 2 + "px";
+                parallax();
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }   
+            
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+            
+                function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+
+            addEventListener("resize", function (event) {
+                    parallax();
+                });
+
+                function parallax() {
+                    if (window.innerHeight < window.innerWidth * 0.5625)
+                    {
+                        background.style.backgroundSize = "100% auto";
+                    }
+                    else
+                    {
+                        background.style.backgroundSize = "auto 100%";
+                    }
+                }
+        </script>
     </body>
 
 </html>

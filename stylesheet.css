@@ -71,7 +71,7 @@ a.windows {
 p.windows-title {
   font-family: "Windows Regular";
   color: white;
-  font-weight: bold;
+  font-weight: bolder;
   margin: 0;
   margin-left: 9px;
 }
