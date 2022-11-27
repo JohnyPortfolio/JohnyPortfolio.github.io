@@ -33,12 +33,21 @@
             #windowsdrag
             {
                 position: absolute;
-                width: 300px;
+                top: 160px;
+                width: 600px;
             }
 
             #aboutme {
                 padding: 20px;
                 padding-bottom: 0;
+            }
+
+            @media screen and (max-width:700px) {
+                #windowsdrag {
+                    top: 60px;
+                    margin-bottom: 60px;
+                    width: 80%;
+                }
             }
         </style>
     </head>
@@ -55,8 +64,7 @@
             <p id="aboutme">Hey, I'm Johny! I'm a game developer, currently studying Game
                 Development at SintLucas Eindhoven. I enjoy (game) design and
                 psychology, and am interested in the concepts of gamification
-                and edutainment. I think schools use outdated systems, and could
-                be fun for everyone.</p>
+                and edutainment. I think schools use outdated systems, and if updated, could be just as fun as playing your favourite game.</p>
             <p class="windows"><a href="index.html" class="windows"
                     title="Go back">Go <span
                         class="underline">B</span>ack</a></p>
@@ -69,7 +77,6 @@
 
             function dragElement(elmnt) {
                 elmnt.style.left = (window.innerWidth - elmnt.offsetWidth) /2 + "px";
-                elmnt.style.top = elmnt.offsetHeight / 4 + "px";
                 parallax();
                 var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
                 document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
