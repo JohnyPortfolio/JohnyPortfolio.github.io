@@ -6,7 +6,11 @@ var firstTime = true;
 var sizeX = 18;
 var sizeY = 22;
 
+var konami = 0;
+
 window.onload = init;
+
+
 
 
 function init() {
@@ -34,6 +38,8 @@ function init() {
     interval = setInterval(update, 80);
 
     projectsText = document.getElementById('projects');
+
+    giveAccess(false);
 }
 
 function generateField() {
@@ -153,4 +159,65 @@ function drawSprite(isOn, x, y)
             ctx2.drawImage(panelOffSprite, (x - 9) * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
         }
     }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (konami < 2 && event.key == "ArrowUp")
+    {
+        konami++;
+        console.log("Up!")
+    }
+    else if (konami < 4 && konami > 1 && event.key == "ArrowDown")
+    {
+        konami++;
+        console.log("Down!")
+    }
+    else if ((konami == 4 || konami == 6) && event.key == "ArrowLeft")
+    {
+        konami++;
+        console.log("Left!")
+    }
+    else if ((konami == 5 || konami == 7) && event.key == "ArrowRight")
+    {
+        konami++;
+        console.log("Right!")
+    }
+    else if (konami == 8 && event.key == "b")
+    {
+        konami++;
+        console.log("B!")
+    }
+    else if (konami == 9 && event.key == "a")
+    {
+        konami++;
+        console.log("A!")
+        alert("Access to beta content granted!")
+        giveAccess(true);
+    }
+    else if (konami > 0)
+    {
+        konami = 0;
+        console.log("Failed...")
+        if (konami < 2 && event.key == "ArrowUp")
+    {
+        konami++;
+        console.log("Up!")
+    }
+    }
+    
+});
+
+function giveAccess(hasAccess)
+{
+    var hiddens = document.getElementsByClassName("hidden");
+    for (i = 0; i < hiddens.length; i++) {
+        if (hasAccess)
+        {
+            hiddens[i].style.display = "inline-block";
+        }
+        else
+        {
+            hiddens[i].style.display = "none";
+        }
+      } 
 }
