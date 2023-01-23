@@ -196,13 +196,21 @@ document.addEventListener('keydown', function(event) {
     }
     else if (konami > 0)
     {
-        konami = 0;
-        console.log("Failed...")
-        if (konami < 2 && event.key == "ArrowUp")
-    {
-        konami++;
-        console.log("Up!")
-    }
+        if (event.key == "ArrowUp")
+        {
+            if (konami != 2)
+            {
+                console.log("Failed...")
+                konami = 1;
+            }
+            console.log("Up!")
+        }
+        else
+        {
+            console.log("Failed...")
+            konami = 0;
+        }
+        
     }
     
 });
